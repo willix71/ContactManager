@@ -1,0 +1,41 @@
+<div class="row" ng-controller="testCtrl">
+	<div class="col-sm-8">
+
+		<div class="row">
+			<div class="col-sm-6">
+				<p>Lorem ipsum dolor...</p>
+
+				<button ng-click="clickHandler()">Click Me</button>
+
+				<div ng-if="isHidden">
+					Click the button above to toggle.
+				</div>
+
+				<p ng-class="{'text-center': center, 'text-danger': error}" ng-style="styleDemo()">
+					Lorem ipsum dolor sit amet
+				</p>
+				<label><input type="checkbox" ng-model="center"> text-center</label>
+				<label><input type="checkbox" ng-model="error"> text-danger</label>
+
+				<label><input type="checkbox" ng-model="styler"> ng-style</label>
+			</div>
+
+
+			<div class="col-sm-6">
+				<p>{{ 'Class aptent taciti...' | truncate:8}}</p>
+
+				Contacts: <input type="text" ng-model="search">  <label><input type="checkbox" ng-model="order"> ascending</label>
+				<ul>
+					<li ng-repeat="contact in contacts | filter:{'name':search} | orderBy:'phone':order">
+						{{contact.name}} - {{contact.phone}}
+					</li>
+				</ul>
+
+
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-3 col-sm-offset-1">
+		Here is our sidebar ds={{ds}}
+	</div>
+</div>

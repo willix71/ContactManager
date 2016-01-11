@@ -1,0 +1,64 @@
+<div class="page-header">
+	<h1>
+<!--
+ 		<img src="http://placehold.it/50x50" class="img-circle">
+		<div gravatar email="{{contact.email}}" size="50" class="img-circle"></div>
+		<gravatar email="{{contact.email}}" size="50" class="img-circle"></gravatar>
+ -->		
+		<div gravatar email="{{contact.email}}" size="50" class="img-circle"></div>
+		{{contact.name}}
+	</h1>
+</div>
+
+
+<div class="form-horizontal">
+	<div class="row">
+		<div class="col-xs-6">
+
+			<div class="form-group">
+				<label for="name" class="col-sm-4 control-label">Name</label>
+				<div class="col-sm-8">
+					<p class="form-control-static" editable="contact.name"></p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="phone" class="col-sm-4 control-label">Phone</label>
+				<div class="col-sm-8">
+					<p class="form-control-static" editable="contact.phone" field-type="tel"></p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="address" class="col-sm-4 control-label">Address</label>
+				<div class="col-sm-8">
+					<p class="form-control-static" editable="contact.address" field-type="textarea"></p>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xs-6">
+
+			<div class="form-group">
+				<label for="email" class="col-sm-4 control-label">Email</label>
+				<div class="col-sm-8">
+					<p class="form-control-static" editable="contact.email" field-type="email"></p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="website" class="col-sm-4 control-label">Website</label>
+				<div class="col-sm-8">
+					<p class="form-control-static" editable="contact.website" field-type="url"></p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="notes" class="col-sm-4 control-label">Notes</label>
+				<div class="col-sm-8">
+					<p class="form-control-static" editable="contact.notes" field-type="textarea"></p>
+				</div>
+			</div>	
+		</div>
+	</div>
+</div>

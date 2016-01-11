@@ -1,0 +1,29 @@
+{
+    "folders":
+    [
+        {
+            "path": "app",
+            "follow_symlinks": true
+        },
+        {
+            "path": "assets",
+            "name": "assets",
+        }
+    ],
+    "settings":
+    {
+        "tab_size": 3
+    },
+    "build_systems":
+    [
+        {
+            "name": "list",
+            "shell_cmd": "ls -l"
+        },
+        {
+        	"name": "launch server",
+        	"shell_cmd": "python -m SimpleHTTPServer 8000 "
+        }
+    ]
+}
+
