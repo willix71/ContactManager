@@ -11,9 +11,7 @@ import w.contactmgr.model.Contact;
 public class ContactStore extends SimpleStore<Contact, Long> {
 
 	public ContactStore() {
-		save(1L, new Contact(1,"william"));
-		save(2L, new Contact(2,"ralph"));
-		save(3L, new Contact(3,"marc"));
+		save(1L, new Contact(1L,"William Keyser", "079 471 60 42", "11 ch. du Grand Noyer\nPrangins", "willix71@gmail.com", null,null)); 
 	}
 	
 	@Override

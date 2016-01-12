@@ -1,7 +1,7 @@
 angular.module('contactManager').directive('editable', function(){
 	return {
 		restrict: 'AE',
-		templateUrl: '/assets/partials/editable.html',
+		templateUrl: 'assets/partials/editable.html',
 		scope: {
 			value: '=editable',
 			field: '@fieldType'

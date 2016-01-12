@@ -29,8 +29,7 @@ public abstract class AbstractController<T, ID> {
 	/**
 	 * curl -i http://localhost:8080/spring/rest/contact/1
 	 * 
-	 * curl -i --header â€œAccept: application/jsonâ€?
-	 * http://localhost:8880/spring/rest/foos/1
+	 * curl -i --header "Accept: application/json" http://localhost:8880/ContactManager/rest/contact/1
 	 * 
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -40,7 +39,7 @@ public abstract class AbstractController<T, ID> {
 	}
 
 	/**
-	 * curl -i http://localhost:8880/spring/rest/foos
+	 * curl -i http://localhost:8880/ContactManager/rest/contact
 	 * 
 	 */
 	@RequestMapping(method = RequestMethod.GET)
@@ -50,9 +49,7 @@ public abstract class AbstractController<T, ID> {
 	}
 
 	/**
-	 * curl -i http://localhost:8880/spring/rest/foos?page=0&size=5 curl -iH
-	 * "Content-Type: application/json" -X POST -d '{"name":"henri"}'
-	 * http://localhost:8880/spring/rest/foos
+	 * curl -iH "Content-Type: application/json" -X POST -d '{"name":"henri"}' http://localhost:8880/ContactManager/rest/contact
 	 *
 	 * or save the json to a file and replace it by @filename
 	 * 
@@ -66,8 +63,7 @@ public abstract class AbstractController<T, ID> {
 	}
 
 	/**
-	 * curl -iH "Content-Type: application/json" -X PUT -d
-	 * '{"id":"1","name":"willy123"}' http://localhost:8880/spring/rest/foos/1
+	 * curl -iH "Content-Type: application/json" -X PUT -d '{"id":"1","name":"willy123"}' http://localhost:8880/ContactManager/rest/contact/1
 	 * 
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
@@ -77,8 +73,7 @@ public abstract class AbstractController<T, ID> {
 	}
 
 	/**
-	 * curl -iH "Content-Type: application/json" -X PATCH -d
-	 * '{"name":"willy123"}' http://localhost:8880/spring/rest/foos/1
+	 * curl -iH "Content-Type: application/json" -X PATCH -d '{"name":"willy123"}' http://localhost:8880/ContactManager/rest/contact/1
 	 * 
 	 */
 //	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
@@ -114,7 +109,7 @@ public abstract class AbstractController<T, ID> {
 //	}
 	
 	/**
-	 * curl -i -X DELETE http://localhost:8880/spring/rest/foos/1
+	 * curl -i -X DELETE http://localhost:8880/ContactManager/rest/contact/1
 	 * 
 	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

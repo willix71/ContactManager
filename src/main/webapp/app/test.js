@@ -24,7 +24,7 @@
 
 		// var store = $scope;
 		// store.contacts = [];
-		// $http.get('/assets/data/contacts.json').success(function(data){ 
+		// $http.get('assets/data/contacts.json').success(function(data){ 
 		// 	//store.contacts = $filter('filter')(data,{'name': 'P'}); 
 		// 	//store.contacts = filterFilter(data,{'name': 'P'}); 
 		// 	store.contacts = data;

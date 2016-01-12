@@ -1,7 +1,7 @@
 function ContactManager() {
 	// var store = $scope;
 	// 	store.contacts = [];
-	// 	$http.get('/assets/data/contacts.json').success(function(data){ 
+	// 	$http.get('assets/data/contacts.json').success(function(data){ 
 	// 		//store.contacts = $filter('filter')(data,{'name': 'P'}); 
 	// 		//store.contacts = filterFilter(data,{'name': 'P'}); 
 	// 		store.contacts = data;
@@ -46,7 +46,7 @@ function ContactManager() {
 		get: function(){
 			return contacts;
 		},
-		find: function(id){
+		find: function(id){			
 			for(var	i=0, max=contacts.length; i<max; i++){
 				var c = contacts[i];
 				if (c.id == id) {
