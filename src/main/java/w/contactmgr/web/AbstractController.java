@@ -1,7 +1,9 @@
 package w.contactmgr.web;
 
 
+import java.lang.reflect.Method;
 import java.util.Collection;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import w.contactmgr.model.Contact;
 import w.contactmgr.service.IStore;
 
 public abstract class AbstractController<T, ID> {
@@ -76,37 +79,25 @@ public abstract class AbstractController<T, ID> {
 	 * curl -iH "Content-Type: application/json" -X PATCH -d '{"name":"willy123"}' http://localhost:8880/ContactManager/rest/contact/1
 	 * 
 	 */
-//	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
-//	@ResponseStatus(HttpStatus.NO_CONTENT)
-//	public void patch(@PathVariable("id") final ID id, @RequestBody final Map<String,?> resource, final HttpServletResponse response) {
-//		Preconditions.checkNotNull(resource);
-//		
-//		T entity = service.load(id);
-//		
-//		Object entityId = PersistenceUtils.getIdValue(entity);
-//		
-//		RestPreconditions.checkFound(entity);
-//		
-//		// we need a new mapper else old mapping might corrupt our current mappings.
-//		ModelMapper m = WebConfig.newModelMapper();
-//		m.map(resource, entity);
-//
-//		// make sure we did not overwrite the id
-//		Object entityId2 = PersistenceUtils.getIdValue(entity);
-//		if (!entityId.equals(entityId2)) {
-//			new ConflictException("Ids", entityId, entityId2);
-//		}
-//		
-//		if (LOGGER.isDebugEnabled()) {
-//			StringBuilder sb = new StringBuilder("Mappings\n");
-//			for(TypeMap<?,?> tm: m.getTypeMaps()) {
-//				sb.append("\t").append(tm).append("=").append(tm.getMappings()).append("\n");
-//			}
-//			LOGGER.debug(sb.toString());
-//		}
-//		
-//		service.save(entity);
-//	}
+	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void patch(@PathVariable("id") final ID id, @RequestBody final Map<String,?> values) {		
+		LOGGER.info("patching <{}> with {}", id, values);
+		
+		T t = store.load(id);
+		 
+		for (String key: values.keySet()) {
+			try {
+				// TODO generic
+				Method m = Contact.class.getMethod("set" +key.substring(0,1).toUpperCase()+key.substring(1) , String.class);
+				m.invoke(t, values.get(key));
+			} catch(Exception e) {
+				throw new IllegalArgumentException("Can't set value for " + key, e);
+			}
+		}
+		
+		store.save(id, t);
+	}
 	
 	/**
 	 * curl -i -X DELETE http://localhost:8880/ContactManager/rest/contact/1

@@ -111,6 +111,11 @@ public class Contact implements Cloneable, Serializable {
 		return true;
 	}
 
+	@Override
+	public String toString() {
+		return "Contact [id=" + id + ", name=" + name + "]";
+	}
+
 	public Contact klone() {
 		try {
 			return (Contact) clone();
