@@ -60,4 +60,6 @@ function ContactManager() {
 //			}
 //		}
 //	};
+	
+	return {};
 }
