@@ -40,6 +40,8 @@ function toMd5(s){
 		return d
 	}
 
+	s = s?s:"unknown";
+	
 	var C=Array();
 	var P,h,E,v,g,Y,X,W,V;
 	var S=7,Q=12,N=17,M=22;

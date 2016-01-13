@@ -4,8 +4,11 @@
  		<img src="http://placehold.it/50x50" class="img-circle">
 		<div gravatar email="{{contact.email}}" size="50" class="img-circle"></div>
 		<gravatar email="{{contact.email}}" size="50" class="img-circle"></gravatar>
- -->		
-		<div gravatar email="{{contact.email}}" size="50" class="img-circle"></div>
+ -->	
+ 		<img ng-src="{{gravatarUrl}}?s=50" class="img-circle">
+ 		<gravatar1 email="contact.email" size="40" class="img-circle"/>
+		<gravatar2 email="contact.email" size="30" class="img-circle"/>		
+		
 		{{contact.name}}
 	</h1>
 </div>
