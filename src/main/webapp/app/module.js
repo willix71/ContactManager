@@ -1,5 +1,5 @@
 (function() {
-	var app = angular.module('contactManager', ['ngRoute','ngSanitize','mgcrea.ngStrap']);
+	var app = angular.module('contactManager', ['ngRoute','ngSanitize','mgcrea.ngStrap','ngResource']);
 
 	app.config(['$routeProvider', '$locationProvider',function($routeProvider, $locationProvider){
 		$routeProvider
@@ -37,7 +37,5 @@
 			return (path == $location.path()) ? 'active' : '';
 		};
 	}]);
-
-	app.factory('contactManager', ContactManager);
 
 }) ();

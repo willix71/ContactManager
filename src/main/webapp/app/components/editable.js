@@ -1,4 +1,4 @@
-angular.module('contactManager').directive('editable', ['$http', function($http){
+angular.module('contactManager').directive('editable', ['contactManager', function(contactManager){
 	return {
 		restrict: 'AE',
 		templateUrl: 'assets/partials/editable.html',
@@ -30,7 +30,7 @@ angular.module('contactManager').directive('editable', ['$http', function($http)
 				// build the json to send
 				var j = JSON.parse('{"' + $scope.fieldName+ '":"'+$scope.value + '"}');
 
-				$http.patch('http://localhost:8080/ContactManager/rest/contact/'+$scope.contactId, j).error(function() {
+				contactManager.update($scope.contactId, j, function (err) {
 					$scope.value = rollbackValue;
 				});
 			};
