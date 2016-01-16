@@ -10,8 +10,8 @@ angular.module('contactManager').directive('gravatar1', function(){
 		replace: true,
 		scope: {
 			contactEmail: '=email',
-			size: '@size',
-			class: '@class'
+			size: '@',
+			class: '@'
 		},
 		
 		controller: ['$scope', function($scope){
