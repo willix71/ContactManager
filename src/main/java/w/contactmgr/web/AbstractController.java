@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import w.contactmgr.exception.DummyException;
 import w.contactmgr.model.Contact;
 import w.contactmgr.service.IStore;
 
@@ -30,7 +31,7 @@ public abstract class AbstractController<T, ID> {
 	}
 	
 	/**
-	 * curl -i http://localhost:8080/spring/rest/contact/1
+	 * curl -i http://localhost:8880/spring/rest/contact/1
 	 * 
 	 * curl -i --header "Accept: application/json" http://localhost:8880/ContactManager/rest/contact/1
 	 * 
@@ -88,9 +89,16 @@ public abstract class AbstractController<T, ID> {
 		 
 		for (String key: values.keySet()) {
 			try {
+				Object v = values.get(key);
+				if (v instanceof String && ((String)v).length()==1) {
+					// generate a fake exception
+					throw new DummyException(key);
+				}
 				// TODO generic
 				Method m = Contact.class.getMethod("set" +key.substring(0,1).toUpperCase()+key.substring(1) , String.class);
-				m.invoke(t, values.get(key));
+				m.invoke(t, v);
+			} catch(DummyException e) {
+				throw e;
 			} catch(Exception e) {
 				throw new IllegalArgumentException("Can't set value for " + key, e);
 			}
