@@ -1,5 +1,5 @@
 angular.module('contactManager').factory('contactManager', ['$resource',function($resource) {
-	var Resource = $resource('http://localhost:10080/ContactManager/rest/contact/:id', {id:'@id'},{
+	var Resource = $resource('rest/contact/:id', {id:'@id'},{
 		update: {method: 'PATCH'}
 	});
 	return {
